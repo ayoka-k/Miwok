@@ -31,18 +31,21 @@
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
 
+    <!-- Style for image view in list item layout -->
     <style name="ImageViewStyle">
         <item name="android:layout_height">@dimen/list_item_height</item>
         <item name="android:layout_width">@dimen/list_item_height</item>
         <item name="android:background">@color/tan_background</item>
     </style>
 
+    <!-- Style for linear layout container -->
     <style name="TextViewGroupStyle">
         <item name="android:layout_height">@dimen/list_item_height</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:paddingLeft">@dimen/view_group_padding_left</item>
     </style>
 
+    <!-- Style for miwok word text view -->
     <style name="MiwokTranslationStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
@@ -53,6 +56,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- Style for default word text view -->
     <style name="DefaultTranslationStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
