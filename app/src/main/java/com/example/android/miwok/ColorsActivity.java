@@ -13,14 +13,14 @@ public class ColorsActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.word_list);
       ArrayList<Word> colorsWords = new ArrayList<>();
-      colorsWords.add(new Word("weṭeṭṭi", "red"));
-      colorsWords.add(new Word("chokokki", "green"));
-      colorsWords.add(new Word("ṭakaakki", "brown"));
-      colorsWords.add(new Word("ṭopoppi", "gray"));
-      colorsWords.add(new Word("kululli", "black"));
-      colorsWords.add(new Word("kelelli", "white"));
-      colorsWords.add(new Word("ṭopiisә", "dusty yellow"));
-      colorsWords.add(new Word("chiwiiṭә", "mustard yellow"));
+      colorsWords.add(new Word("weṭeṭṭi", "red", R.drawable.color_red));
+      colorsWords.add(new Word("chokokki", "green", R.drawable.color_green));
+      colorsWords.add(new Word("ṭakaakki", "brown", R.drawable.color_brown));
+      colorsWords.add(new Word("ṭopoppi", "gray", R.drawable.color_gray));
+      colorsWords.add(new Word("kululli", "black", R.drawable.color_black));
+      colorsWords.add(new Word("kelelli", "white", R.drawable.color_white));
+      colorsWords.add(new Word("ṭopiisә", "dusty yellow", R.drawable.color_dusty_yellow));
+      colorsWords.add(new Word("chiwiiṭә", "mustard yellow", R.drawable.color_mustard_yellow));
 
       WordAdapter adapter = new WordAdapter(this, colorsWords);
       ListView listView = (ListView) findViewById(R.id.list_view_layout);
