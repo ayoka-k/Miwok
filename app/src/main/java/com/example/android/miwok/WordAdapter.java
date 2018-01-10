@@ -26,24 +26,33 @@ public class WordAdapter extends ArrayAdapter<Word>{
         // Get the {@link Word} object located at this position in the list
         Word currentWord = getItem(position);
 
-        // Find the TextView in the list_item.xml layout with the ID version_name
-        TextView miwokWordTextView = (TextView) listItemView.findViewById(R.id.miwok_text_view);
-        // Get the version name from the current Word object and
-        // set this text on the name TextView
+        // Find the TextView in the list_item.xml layout with the ID miwok_text_view
+        TextView miwokWordTextView = listItemView.findViewById(R.id.miwok_text_view);
+        // Get the miwok translation from the current Word object and
+        // set this text on the miwok translation TextView
         miwokWordTextView.setText(currentWord.getMiwokTransltation());
 
-        // Find the TextView in the list_item.xml layout with the ID version_number
-        TextView defaultWordTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
-        // Get the version name from the current Word object and
-        // set this text on the name TextView
+        // Find the TextView in the list_item.xml layout with the ID default_text_view
+        TextView defaultWordTextView = listItemView.findViewById(R.id.default_text_view);
+        // Get the default translation from the current Word object and
+        // set this text on the default translation TextView
         defaultWordTextView.setText(currentWord.getDefaultTranslation());
 
-        // Find the ImageView in the list_item.xml layout with the ID version_number
-        ImageView image = listItemView.findViewById(R.id.imageView);
-        // Get the version name from the current Word object and
-        // set this image on the name ImageView
-        image.setImageResource(currentWord.getImageRecourceId());
+        // Find the ImageView in the list_item.xml layout with the ID image_view
+        ImageView image = listItemView.findViewById(R.id.image_view);
+        // Check if an image is provided for this word or not
+        if (currentWord.hasImage()) {
+            // If an image is available, display the provided image based on the resource ID
+            image.setImageResource(currentWord.getImageRecourceId());
 
+            //Make sure the image is visible
+            image.setVisibility(View.VISIBLE);
+        } else {
+            // Otherwise hide the ImageView (set visibility to GONE)
+            image.setVisibility(View.GONE);
+        }
+        // Return the whole list item layout (containing 2 TextViews and an ImageView)
+        // so that it can be shown in the ListView
         return listItemView;
     }
 }
