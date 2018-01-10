@@ -15,7 +15,11 @@
 <resources>
     <!-- Height of each list item -->
     <dimen name="list_item_height">88dp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Left/Start padding of TextViewGroup in list item layout -->
+    <dimen name="view_group_padding_left">16dp</dimen>
+    <dimen name="view_group_padding_start">16dp</dimen>
+
+    <!-- Padding for all activities -->
+    <dimen name="padding">16dp</dimen>
 </resources>

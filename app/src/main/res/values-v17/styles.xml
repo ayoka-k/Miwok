@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextViewGroupStyle">
+        <item name="android:layout_height">@dimen/list_item_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingLeft">@dimen/view_group_padding_left</item>
+        <item name="android:paddingStart">@dimen/view_group_padding_start</item>
+    </style>
+</resources>
