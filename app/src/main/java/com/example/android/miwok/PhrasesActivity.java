@@ -1,18 +1,23 @@
 package com.example.android.miwok;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
 
+    private MediaPlayer mMediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
-        ArrayList<Word> phrases = new ArrayList<>();
+        final ArrayList<Word> phrases = new ArrayList<>();
         phrases.add(new Word("minto wuksus", "Where are you going?", R.raw.phrase_where_are_you_going));
         phrases.add(new Word("tinnә oyaase'nә", "What is your name?", R.raw.phrase_what_is_your_name));
         phrases.add(new Word("oyaaset...", "My name is...", R.raw.phrase_my_name_is));
@@ -27,5 +32,13 @@ public class PhrasesActivity extends AppCompatActivity {
         WordAdapter adapter = new WordAdapter(this, phrases, R.color.category_phrases);
         ListView listView = findViewById(R.id.list_view_layout);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Word word = phrases.get(position);
+                mMediaPlayer = MediaPlayer.create(PhrasesActivity.this, word.getAudioResourceId());
+                mMediaPlayer.start();
+            }
+        });
     }
 }
