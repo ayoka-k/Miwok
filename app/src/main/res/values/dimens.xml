@@ -13,12 +13,19 @@
      limitations under the License.
 -->
 <resources>
-    <!-- Height of each list item -->
+    <!-- Height of each list item layout -->
     <dimen name="list_item_height">88dp</dimen>
 
     <!-- Left/Start padding of TextViewGroup in list item layout -->
     <dimen name="view_group_padding_left">16dp</dimen>
     <dimen name="view_group_padding_start">16dp</dimen>
+
+    <!-- Height for translation text view in list item layout -->
+    <dimen name="translation_text_view_height">44dp</dimen>
+
+    <!-- Play icon dimens -->
+    <dimen name="play_icon_width_and_height">24dp</dimen>
+    <dimen name="play_icon_right_margin">16dp</dimen>
 
     <!-- Padding for all activities -->
     <dimen name="padding">16dp</dimen>

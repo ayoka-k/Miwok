@@ -43,12 +43,16 @@
         <item name="android:layout_height">@dimen/list_item_height</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:paddingLeft">@dimen/view_group_padding_left</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_toRightOf">@id/image_view</item>
     </style>
 
     <!-- Style for miwok word text view -->
     <style name="MiwokTranslationStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/translation_text_view_height</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">bottom</item>
         <item name="android:textColor">@android:color/white</item>
@@ -58,11 +62,21 @@
 
     <!-- Style for default word text view -->
     <style name="DefaultTranslationStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/translation_text_view_height</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">top</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
+
+    <!-- Style for play icon in list item layout -->
+    <style name="PlayIconStyle">
+        <item name="android:layout_width">@dimen/play_icon_width_and_height</item>
+        <item name="android:layout_height">@dimen/play_icon_width_and_height</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">@dimen/play_icon_right_margin</item>
+    </style>
+
 </resources>
