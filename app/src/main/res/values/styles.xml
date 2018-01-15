@@ -29,6 +29,7 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
     <!-- Style for image view in list item layout -->
