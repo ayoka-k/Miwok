@@ -1,17 +1,23 @@
 package com.example.android.miwok;
 
+
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ColorsActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class PhrasesFragment extends Fragment {
 
     private MediaPlayer mMediaPlayer;
     private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
@@ -35,45 +41,46 @@ public class ColorsActivity extends AppCompatActivity {
         }
     };
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.word_list);
-        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        final ArrayList<Word> colorsWords = new ArrayList<>();
-        colorsWords.add(new Word("weṭeṭṭi", "red", R.drawable.color_red, R.raw.color_red));
-        colorsWords.add(new Word("chokokki", "green", R.drawable.color_green, R.raw.color_green));
-        colorsWords.add(new Word("ṭakaakki", "brown", R.drawable.color_brown, R.raw.color_brown));
-        colorsWords.add(new Word("ṭopoppi", "gray", R.drawable.color_gray, R.raw.color_gray));
-        colorsWords.add(new Word("kululli", "black", R.drawable.color_black, R.raw.color_black));
-        colorsWords.add(new Word("kelelli", "white", R.drawable.color_white, R.raw.color_white));
-        colorsWords.add(new Word("ṭopiisә", "dusty yellow", R.drawable.color_dusty_yellow, R.raw.color_dusty_yellow));
-        colorsWords.add(new Word("chiwiiṭә", "mustard yellow", R.drawable.color_mustard_yellow, R.raw.color_mustard_yellow));
 
-        WordAdapter adapter = new WordAdapter(this, colorsWords, R.color.category_colors);
-        ListView listView = findViewById(R.id.list_view_layout);
+    public PhrasesFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.word_list, container, false);
+        mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+        final ArrayList<Word> phrases = new ArrayList<>();
+        phrases.add(new Word("minto wuksus", "Where are you going?", R.raw.phrase_where_are_you_going));
+        phrases.add(new Word("tinnә oyaase'nә", "What is your name?", R.raw.phrase_what_is_your_name));
+        phrases.add(new Word("oyaaset...", "My name is...", R.raw.phrase_my_name_is));
+        phrases.add(new Word("michәksәs?", "How are you feeling?", R.raw.phrase_how_are_you_feeling));
+        phrases.add(new Word("kuchi achit", "I’m feeling good.", R.raw.phrase_im_feeling_good));
+        phrases.add(new Word("әәnәs'aa?", "Are you coming?", R.raw.phrase_are_you_coming));
+        phrases.add(new Word("hәә’ әәnәm", "Yes, I’m coming.", R.raw.phrase_yes_im_coming));
+        phrases.add(new Word("әәnәm", "I’m coming.", R.raw.phrase_im_coming));
+        phrases.add(new Word("yoowutis", "Let’s go.", R.raw.phrase_lets_go));
+        phrases.add(new Word("әnni'nem", "Come here.", R.raw.phrase_come_here));
+
+        WordAdapter adapter = new WordAdapter(getActivity(), phrases, R.color.category_phrases);
+        ListView listView = rootView.findViewById(R.id.list_view_layout);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Word word = colorsWords.get(position);
+                Word word = phrases.get(position);
                 int result = mAudioManager.requestAudioFocus(mAudioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                     releaseMediaPlayer();
-                    mMediaPlayer = MediaPlayer.create(ColorsActivity.this, word.getAudioResourceId());
+                    mMediaPlayer = MediaPlayer.create(getActivity(), word.getAudioResourceId());
                     mMediaPlayer.start();
                     mMediaPlayer.setOnCompletionListener(mCompletionListener);
                 }
             }
         });
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        //When the activity os stopped, release the media player resources because we won't
-        //be playing any more sounds.
-        releaseMediaPlayer();
+        return rootView;
     }
 
     private void releaseMediaPlayer() {
